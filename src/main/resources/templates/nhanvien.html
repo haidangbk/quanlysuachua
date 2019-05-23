@@ -46,7 +46,7 @@
 						th:href="@{/detail-user/{id}(id=${nv.id_nhan_vien})}" th:text="${nv.id_nhan_vien}"></a></td>
 					<td><a
 						th:href="@{/detail-user/{id}(id=${nv.id_nhan_vien})}" th:text="${nv.user_name}"></a></td>
-					<td><a th:href="@{/delete-user/{id}(id=${nv.id_nhan_vien})}"><i
+					<td><a th:if="${nv.role} == 0" th:href="@{/delete-user/{id}(id=${nv.id_nhan_vien})}"><i
 							class="fas fa-trash-alt"></i></a></td>
 				</tr>
 				<tr>
