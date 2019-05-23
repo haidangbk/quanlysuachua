@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Thêm xe</title>
+<div th:replace="common/common :: bootstrap"></div>
+<div th:replace="common/common :: fontawesome"></div>
+</head>
+<body>
+	<div class="container-fluid">
+		<form th:action="@{/add-car}" method="POST">
+			<div class="form-group">
+				<label>Ngày lỗi</label> <input type="text"
+					class="form-control col-md-6" placeholder="Ngày lỗi"
+					th:name="ngay_loi">
+			</div>
+			<div class="form-group">
+				<label>Ngày báo cáo</label> <input type="text"
+					class="form-control col-md-6" placeholder="Ngày báo cáo"
+					th:name="ngay_bao_cao">
+			</div>
+			<div class="form-group">
+				<label>Biển kiểm soát</label> <input type="text"
+					class="form-control col-md-6" placeholder="Biển kiểm soát"
+					th:name="bien_kiem_soat">
+			</div>
+			<div class="form-group">
+				<label>Tuyến xe</label> <input type="text"
+					class="form-control col-md-6" placeholder="Tuyến xe"
+					th:name="tuyen_xe">
+			</div>
+	
+			<div class="form-group">
+				<label class="col-md-2">ID Bảng Led</label> <select
+					th:name="id_bang_led">
+					<option th:each="bl : ${listBangLed}" th:value="${bl.id_bang_led}" th:text="${bl.id_bang_led}"></option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</body>
+
+</html>

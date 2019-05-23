@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Quan ly car</title>
+<div th:replace="common/common :: bootstrap"></div>
+<div th:replace="common/common :: fontawesome"></div>
+</head>
+<body>
+	<div class="container-fluid">
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<!-- Brand/logo -->
+			<a class="navbar-brand" th:href="@{/car}"> <img
+				th:src="@{/image/school-bus.png}" alt="logo" style="width: 40px;">
+			</a>
+
+
+			<form class="form-inline ml-auto" th:action="@{/search}" method="POST">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search" th:name="search">
+				<button class="btn btn-success" type="submit">Search</button>
+			</form>
+			<ul class="navbar-nav">
+				<li th:if="${session.user.role == 1}" class="nav-item"><a
+					class="nav-link" th:href="@{/admin}"><i
+						class="fas fa-users-cog"></i></a></li>
+				<li th:if="${session.user.role == 1}" class="nav-item"><a
+					class="nav-link" th:href="@{/car}"><i
+						class="fas fa-user" th:text="${session.user.user_name}"></i></a></li>
+				<li th:if="${session.user.role == 0}" class="nav-item"><a
+					class="nav-link" th:href="@{/car}"><i class="fas fa-user"
+						th:text="${session.user.user_name}"></i></a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/logout}"><i
+						class="fas fa-sign-out-alt">Log out</i></a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<div class="container-fluid">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col" th:text="#{Car.id}"></th>
+					<th scope="col" th:text="#{Car.ngayloi}"></th>
+					<th scope="col" th:text="#{Car.ngaybaocao}"></th>
+					<th scope="col" th:text="#{Car.bienkiemsoat}"></th>
+					<th scope="col" th:text="#{Car.tuyenxe}"></th>
+					<th scope="col" th:text="#{BangLed.ledtruoc}"></th>
+					<th scope="col" th:text="#{BangLed.ledsuon}"></th>
+					<th scope="col" th:text="#{BangLed.ledsau}"></th>
+					<th scope="col" th:text="#{BangLed.ledtrong}"></th>
+					<th scope="col" th:text="#{BangLed.tinhtrangloi}"></th>
+					<th scope="col" th:text="#{BangLed.ngaykhsc}"></th>
+					<th scope="col" th:text="#{BangLed.ngayscthucte}"></th>
+					<th scope="col" th:text="#{BangLed.nguyennhan}"></th>
+					<th scope="col" th:text="#{BangLed.kq}"></th>
+					<th scope="col" th:text="#{BangLed.tongsongaysc}"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="car : ${session.user.listCar}">
+					<td scope="row" th:text="${car.id_car}"></td>
+					<td th:text="${car.ngay_loi}"></td>
+					<td th:text="${car.ngay_bao_cao}"></td>
+					<td th:text="${car.bien_kiem_soat}"></td>
+					<td th:text="${car.tuyen_xe}"></td>
+					<td th:text="${car.bangLed.led_truoc}"></td>
+					<td th:text="${car.bangLed.led_suon}"></td>
+					<td th:text="${car.bangLed.led_sau}"></td>
+					<td th:text="${car.bangLed.led_trong}"></td>
+					<td th:text="${car.bangLed.tinh_trang_loi}"></td>
+					<td th:text="${car.bangLed.ngay_kh_sc}"></td>
+					<td th:text="${car.bangLed.ngay_sc_thuc_te}"></td>
+					<td th:text="${car.bangLed.nguyen_nhan}"></td>
+					<td th:text="${car.bangLed.kq.ket_qua_sua_chua}"></td>
+					<td th:text="${car.bangLed.tong_so_ngay_sc}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

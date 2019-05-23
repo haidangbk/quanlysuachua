@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Thêm bảng led</title>
+<div th:replace="common/common :: bootstrap"></div>
+<div th:replace="common/common :: fontawesome"></div>
+</head>
+<body>
+	<div class="container-fluid">
+		<form th:action="@{/add-bang-led}" method="POST">
+			<div class="form-group">
+				<label class="col-md-2">Led trước </label> <select
+					th:name="led_truoc">
+					<option value="0">Không hỏng</option>
+					<option value="1">Hỏng</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2">Led sườn </label> <select th:name="led_suon">
+					<option value="0">Không hỏng</option>
+					<option value="1">Hỏng</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2">Led sau </label> <select th:name="led_sau">
+					<option value="0">Không hỏng</option>
+					<option value="1">Hỏng</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2">Led trong </label> <select
+					th:name="led_trong">
+					<option value="0">Không hỏng</option>
+					<option value="1">Hỏng</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Tình trạng hỏng</label> <input type="text"
+					class="form-control col-md-6" th:name="tinh_trang_loi">
+			</div>
+			<div class="form-group">
+				<label>Ngày KH SC</label> <input type="text"
+					class="form-control col-md-6" th:name="ngay_kh_sc">
+			</div>
+			<div class="form-group">
+				<label>Ngày SC thực tế</label> <input type="text"
+					class="form-control col-md-6" th:name="ngay_sc_thuc_te">
+			</div>
+
+			<div class="form-group">
+				<label>Nguyên nhân</label> <input type="text"
+					class="form-control col-md-6" th:name="nguyen_nhan">
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-2">Kết quả</label> <select th:name="kq">
+					<option value="0">Chưa sửa</option>
+					<option value="1">Hoàn thành</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Tổng ngày sửa chữa </label> <input type="text"
+					class="form-control col-md-6" th:name="tong_so_ngay_sc">
+			</div>
+	</div>
+
+
+	<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+	</div>
+</body>
+
+</html>

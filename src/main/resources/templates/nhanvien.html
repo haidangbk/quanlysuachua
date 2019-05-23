@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Danh sách nhân viên</title>
+<div th:replace="common/common :: bootstrap"></div>
+<div th:replace="common/common :: fontawesome"></div>
+</head>
+<body>
+	<div class="container-fluid">
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<!-- Brand/logo -->
+			<a class="navbar-brand" th:href="@{/car}"> <img
+				th:src="@{/image/school-bus.png}" alt="logo" style="width: 40px;">
+			</a>
+
+
+			<form class="form-inline ml-auto" th:action="@{/search}" method="POST">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search" th:name="search">
+				<button class="btn btn-success" type="submit">Search</button>
+			</form>
+			<ul class="navbar-nav">
+				<li th:if="${session.user.role == 1}" class="nav-item"><a
+					class="nav-link" th:href="@{/admin}"><i
+						class="fas fa-users-cog"></i></a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/list-nhan-vien}"><i class="fas fa-user"
+						th:text="${session.user.user_name}"></i></a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/logout}"><i
+						class="fas fa-sign-out-alt">Log out</i></a></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="container-fluid">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col" th:text="#{NhanVien.id}"></th>
+					<th scope="col" th:text="#{NhanVien.name}"></th>
+					<th scope="col">Xóa</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="nv : ${nhanViens}">
+					<td scope="row" ><a
+						th:href="@{/detail-user/{id}(id=${nv.id_nhan_vien})}" th:text="${nv.id_nhan_vien}"></a></td>
+					<td><a
+						th:href="@{/detail-user/{id}(id=${nv.id_nhan_vien})}" th:text="${nv.user_name}"></a></td>
+					<td><a th:href="@{/delete-user/{id}(id=${nv.id_nhan_vien})}"><i
+							class="fas fa-trash-alt"></i></a></td>
+				</tr>
+				<tr>
+					<td scope="row"></td>
+					<td scope="row"></td>
+					<td><a th:href="@{/add-user}"><i
+							class="far fa-plus-square"></i></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
